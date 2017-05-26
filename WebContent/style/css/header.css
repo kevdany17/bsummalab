@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+#logo{
+	width:100%;
+	heigth:auto;
+}
+#sub-header{
+	margin-top:10px;
+	color:blue;
+}

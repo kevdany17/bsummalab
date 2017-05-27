@@ -8,6 +8,9 @@
 <link href="style/css/journal.css" rel="stylesheet"/>
 <script src="style/js/bootstrap.min.js"></script>
 <link href="style/css/header.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
 <title>BS-UMMA Lab</title>
 </head>
 <body class="container-fluid">

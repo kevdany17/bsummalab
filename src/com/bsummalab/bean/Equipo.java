@@ -1,7 +1,5 @@
 package com.bsummalab.bean;
 
-import java.util.LinkedList;
-
 public class Equipo {
 	private String id;
 	private String fechaIngreso;
@@ -13,14 +11,14 @@ public class Equipo {
 	private String hdd;
 	private String licencia;
 	private String diagnostico;
-	private String observacones;
+	private String observaciones;
 	private String estado;
 	private String fechaEntrega;
 	public String getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setId(Integer id) {
+		this.id = id.toString();
 	}
 	public String getFechaIngreso() {
 		return fechaIngreso;
@@ -76,11 +74,11 @@ public class Equipo {
 	public void setDiagnostico(String diagnostico) {
 		this.diagnostico = diagnostico;
 	}
-	public String getObservacones() {
-		return observacones;
+	public String getObservaciones() {
+		return observaciones;
 	}
-	public void setObservacones(String observacones) {
-		this.observacones = observacones;
+	public void setObservaciones(String observacones) {
+		this.observaciones = observacones;
 	}
 	public String getEstado() {
 		return estado;

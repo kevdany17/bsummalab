@@ -12,8 +12,11 @@ public class DAOTecnico {
 	public DAOTecnico(DataSource dataSource){
 		this.ds = dataSource;
 	}
-	public int insertarDatos(Bitacora bitacora){
-		return 0;
+	public boolean insertarDatos(Bitacora bitacora){
+		String sql = "INSERT INTO clientes (id,nombre,telefono,correo)VALUES ('"+bitacora.getCliente().getId()+"','"
+				+ bitacora.getCliente().getNombre()+"','"+bitacora.getCliente().getTelefono()+"','"+bitacora.getCliente().getCorreo()+"');";
+		String sql2 = "INSERT INTO equipos VALUES(); ";
+		return true;
 	}
 	public LinkedList<Servicio> obetenerServicios(){
 		String sql = "SELECT * FROM servicios";

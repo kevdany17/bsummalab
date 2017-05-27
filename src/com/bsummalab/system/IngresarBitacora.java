@@ -1,6 +1,8 @@
 package com.bsummalab.system;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.bsummalab.bean.Bitacora;
 import com.bsummalab.bean.Cliente;
 import com.bsummalab.bean.Equipo;
+import com.bsummalab.bean.Servicio;
 import com.bsummalab.dao.DAOTecnico;
 import com.bsummalab.datasource.DataSource;
 
@@ -47,7 +50,30 @@ public class IngresarBitacora extends HttpServlet {
 		client.setNombre(request.getParameter("nombre-cliente"));
 		client.setTelefono(request.getParameter("telefono"));
 		client.setCorreo(request.getParameter("correo"));
+		equipo.setId(new Date().hashCode());
+		equipo.setFechaIngreso(request.getParameter("fecha-ingreso"));
+		equipo.setMarca(request.getParameter("marca"));
+		equipo.setModelo(request.getParameter("modelo"));
+		equipo.setTipo(request.getParameter("tipo"));
+		equipo.setSistema(request.getParameter("sistema"));
+		equipo.setRam(request.getParameter("ram"));
+		equipo.setHdd(request.getParameter("hdd"));
+		equipo.setLicencia(request.getParameter("licencia"));
+		equipo.setDiagnostico(request.getParameter("diagnostico"));
+		equipo.setObservaciones(request.getParameter("observaciones"));
+		equipo.setFechaEntrega(request.getParameter("fecha-entrega"));
+		equipo.setEstado(request.getParameter("esatdo"));
+		String [] servicios = request.getParameterValues("servicio");
+		for(String i:servicios){
+			Servicio service = new Servicio();
+			service.setId(Integer.parseInt(i));
+			bitacora.setServicios(service);
+		}
+		bitacora.setEquipos(equipo);
 		bitacora.setCliente(client);
+		if(tc.insertarDatos(bitacora)){
+			
+		}
 		
 		
 	}

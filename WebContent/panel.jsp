@@ -137,7 +137,7 @@
 				<div class="form-group">
 					<label>
 						Observaciones:<br>
-						<textarea cols="57" rows="8" ></textarea>
+						<textarea cols="57" rows="8" name="observaciones" ></textarea>
 					</label>
 				</div>
 			</div>
@@ -173,15 +173,16 @@
 				<button type="submit" class="btn btn-primary">Guardar</button>
 			</div>
 		</div>
-	</form>
-	<div class="row">
-	<% 
-	LinkedList<Servicio> list = (LinkedList<Servicio>)request.getAttribute("Lista");
-	for(int i=0;i<list.size();i++ ){%>
-		<div class="col-md-2">
-			<input type="radio" value="<%= list.get(i).getCosto() %>"><%= list.get(i).getNombre() %>
+		<div class="row">
+			<% 
+			LinkedList<Servicio> list = (LinkedList<Servicio>)request.getAttribute("Lista");
+			for(int i=0;i<list.size();i++ ){%>
+				<div class="col-md-2">
+					<input type="checkbox" class="service" name="servicio" value="<%= list.get(i).getId() %>" data-costo="<%= list.get(i).getCosto() %>">
+					<%= list.get(i).getNombre() %>
+				</div>
+			<% } %>
 		</div>
-	<% } %>
-	</div>
+	</form>
 </div>
 </body>

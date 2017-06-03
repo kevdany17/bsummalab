@@ -1,7 +1,7 @@
 package com.bsummalab.bean;
 
 public class Usuario {
-	private String id;
+	private int id;
 	private String usuario;
 	private String contrasena;
 	private String perfil;
@@ -15,10 +15,10 @@ public class Usuario {
 		this.usuario = user;
 		this.contrasena = password;
 	}
-	public String getId() {
-		return id;
+	public int getId() {
+		return this.id;
 	}
-	public void setId(String id) {
+	public void setId(int id){
 		this.id = id;
 	}
 	public String getUsuario() {
@@ -40,7 +40,7 @@ public class Usuario {
 		this.perfil = perfil;
 	}
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

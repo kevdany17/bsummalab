@@ -2,6 +2,7 @@
 <jsp:include page="menu.jsp"></jsp:include>
 <%@page import="java.util.Date" %>
 <%@page import="com.bsummalab.bean.Servicio" %>
+<%@page import="com.bsummalab.bean.Usuario" %>
 <%@page import="java.util.LinkedList" %>
 <link href="style/css/panel.css" rel="stylesheet"/>
 <div class="container-fluid">
@@ -34,13 +35,27 @@
 			<div class="col-md-3">
 				<div class="form-group">
 					<label>
-						Fecha de Ingreso:
-						<input name="fecha-ingreso" type="date" class="form-control">
+						Recibe:
+						<select name="recibe" class="form-control">
+						<% 
+						LinkedList<Usuario> lista = (LinkedList<Usuario>)request.getAttribute("tecnicos");
+						for(int i=0;i<lista.size();i++ ){%>
+							<option value="<%= lista.get(i).getId() %>"><%= lista.get(i).getNombre()%></option>
+						<% } %>
+						</select>
 					</label>
 				</div>
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>
+						Fecha de Ingreso:
+						<input name="fecha-ingreso" type="date" class="form-control">
+					</label>
+				</div>
+			</div>
 			<div class="col-md-3">
 				<div class="form-group">
 					<label>
@@ -80,22 +95,22 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="form-group">
-					<label>
-						Sistema:
-						<select name="sistema" class="form-control">
-							<option value="Laptop">Laptop</option>
-							<option value="C.Escritorio">C.Escritorio</option>
-							<option value="USB">USB</option>
-							<option value="iMAC">iMAC</option>
-							<option value="MAC-book">MAC-book</option>
-						</select>
-					</label>
-				</div>
-			</div>
 		</div>
 		<div class="row">
+		<div class="col-md-3">
+			<div class="form-group">
+				<label>
+					Sistema:
+					<select name="sistema" class="form-control">
+						<option value="Laptop">Laptop</option>
+						<option value="C.Escritorio">C.Escritorio</option>
+						<option value="USB">USB</option>
+						<option value="iMAC">iMAC</option>
+						<option value="MAC-book">MAC-book</option>
+					</select>
+				</label>
+			</div>
+			</div>
 			<div class="col-md-3">
 				<div class="form-group">
 					<label>
@@ -120,17 +135,6 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="form-group">
-					<label>
-						Diagnostico:
-						<select class="form-control" name="diagnostico">
-							<option value="rapido">Diagnostico R&aacute;pido</option>
-							<option value="profundo">Diagnostico Profundo</option>
-						</select>
-					</label>
-				</div>
-			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
@@ -140,6 +144,17 @@
 						<textarea cols="57" rows="8" name="observaciones" ></textarea>
 					</label>
 				</div>
+			</div>
+			<div class="col-md-3">
+			<div class="form-group">
+				<label>
+					Diagnostico:
+					<select class="form-control" name="diagnostico">
+						<option value="rapido">Diagnostico R&aacute;pido</option>
+						<option value="profundo">Diagnostico Profundo</option>
+					</select>
+				</label>
+			</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
@@ -169,8 +184,8 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-3" style="margin-top:20px;">
-				<button type="submit" class="btn btn-primary">Guardar</button>
+			<div class="col-md-2 col-md-offset-3">
+				<button type="submit" class="btn btn-primary" style="width:100%;">Guardar</button>
 			</div>
 		</div>
 		<div class="row">

@@ -72,9 +72,12 @@ public class IngresarBitacora extends HttpServlet {
 		bitacora.setEquipos(equipo);
 		bitacora.setCliente(client);
 		if(tc.insertarDatos(bitacora)){
-			
-		}
-		
+			request.setAttribute("estado",1);
+			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+		}else{
+			request.setAttribute("estado",0);
+			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+		}		
 		
 	}
 

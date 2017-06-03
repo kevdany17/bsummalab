@@ -19,7 +19,7 @@ public class DAOUsuario {
 			this.resultado = this.ds.query(sql);
 			if(this.resultado.first()){
 				user.setCorreo(this.resultado.getString("correo"));
-				user.setId(this.resultado.getString("id"));
+				user.setId(this.resultado.getInt("id"));
 				user.setNombre(this.resultado.getString("nombre"));
 				user.setPerfil(this.resultado.getString("perfil"));
 				user.setContrasena(this.resultado.getString("contrasena"));

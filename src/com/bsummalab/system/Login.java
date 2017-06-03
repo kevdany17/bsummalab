@@ -34,6 +34,7 @@ public class Login extends HttpServlet {
 		DAOUsuario dao = new DAOUsuario(new DataSource());
 		if(dao.iniciarSesion(user) instanceof Usuario){
 			DAOTecnico tc = new DAOTecnico(new DataSource());
+			request.setAttribute("tecnicos",tc.obetenerTecnicos());
 			request.setAttribute("Lista",tc.obetenerServicios());
 			request.getSession().setAttribute("User", user);
 			request.getRequestDispatcher("panel.jsp").forward(request, response);

@@ -23,7 +23,10 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		DAOTecnico tc = new DAOTecnico(new DataSource());
+		request.setAttribute("tecnicos",tc.obetenerTecnicos());
+		request.setAttribute("Lista",tc.obetenerServicios());
+		request.getRequestDispatcher("panel.jsp").forward(request, response);
 	}
 
 	/**

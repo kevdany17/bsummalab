@@ -5,6 +5,25 @@
 <%@page import="com.bsummalab.bean.Usuario" %>
 <%@page import="java.util.LinkedList" %>
 <link href="style/css/panel.css" rel="stylesheet"/>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var costo = 0;
+		var temp = 0;
+		var total = 0;
+		$("input[type=checkbox]").on('click',function(){
+			temp = $("#total").val();
+			costo = $(this).data('costo');
+			if($(this).prop('checked')){
+				total = total+costo;
+				$("#total").val(total);
+			}else{
+				total = total-costo;
+				$("#total").val(total);
+			}
+			
+		});
+	});
+</script>
 <div class="container-fluid">
 	<form action="IngresarBitacora" method="post">
 		<div class="row">
@@ -180,7 +199,7 @@
 				<div class="form-group">
 					<label>
 						Costo:
-						<input name="costo" type="number" class="form-control">
+						<input name="costo" type="number" id="total" class="form-control">
 					</label>
 				</div>
 			</div>
@@ -200,4 +219,4 @@
 		</div>
 	</form>
 </div>
-</body>
+<jsp:include page="footer.jsp"></jsp:include>

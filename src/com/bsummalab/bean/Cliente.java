@@ -2,6 +2,9 @@ package com.bsummalab.bean;
 
 public class Cliente {
 	private String id;
+	private String nombre;
+	private String telefono;
+	private String correo;
 	public String getId() {
 		return id;
 	}
@@ -26,7 +29,5 @@ public class Cliente {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	private String nombre;
-	private String telefono;
-	private String correo;
+	
 }

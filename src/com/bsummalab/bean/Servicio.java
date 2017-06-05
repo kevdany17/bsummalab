@@ -1,5 +1,5 @@
 package com.bsummalab.bean;
-
+//Bean
 public class Servicio {
 	private int id;
 	private String nombre;

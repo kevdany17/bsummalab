@@ -7,22 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bsummalab.bean.Usuario;
-import com.bsummalab.dao.DAOUsuario;
+import com.bsummalab.bean.Servicio;
+import com.bsummalab.dao.DAOTecnico;
 import com.bsummalab.datasource.DataSource;
 
 /**
- * Servlet implementation class AgregarColaborador
+ * Servlet implementation class AgregarServicio
  */
-@WebServlet("/AgregarColaborador")
-public class AgregarColaborador extends HttpServlet {
+@WebServlet("/AgregarServicio")
+public class AgregarServicio extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Default constructor. 
      */
-    public AgregarColaborador() {
-        super();
+    public AgregarServicio() {
+    	super();
         // TODO Auto-generated constructor stub
     }
 
@@ -31,27 +31,29 @@ public class AgregarColaborador extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("addColaborador.jsp").forward(request, response);
+		request.getRequestDispatcher("agregarServicio.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario user = new Usuario();
-		user.setUsuario(request.getParameter("usuario"));
-		user.setContrasena(request.getParameter("contrasena"));
-		user.setCorreo(request.getParameter("correo"));
-		user.setPerfil(request.getParameter("perfil"));
-		user.setTelefono(request.getParameter("telefono"));
-		DAOUsuario dao = new DAOUsuario(new DataSource());
-		if(dao.agregarUsuario(user)){
+		// TODO Auto-generated method stub
+		DAOTecnico tc = new DAOTecnico(new DataSource());
+		Servicio service = new Servicio();
+		//service.setId(request.getParameter("id"));
+		service.setNombre(request.getParameter("nombre"));
+		service.setCosto(Integer.parseInt(request.getParameter("costo")));
+		service.setDescripcion(request.getParameter("descripcion"));
+		if(tc.agregarServicio(service)){
 			request.setAttribute("estado",1);
 			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
 		}else{
 			request.setAttribute("estado",0);
 			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
-		}
+		}		
+		
+				
 	}
 
 }

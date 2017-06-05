@@ -11,9 +11,11 @@ public class DAOTecnico {
 	private DataSource ds;
 	private ResultSet resultado;
 	private int fila;
+	//Constructor Con Inyección de Dependencias
 	public DAOTecnico(DataSource dataSource){
 		this.ds = dataSource;
 	}
+	//Agrega Al Nuevo Cliente, EL Equipo, y Los Servicios Solicitados al Equipo
 	public boolean insertarDatos(Bitacora bitacora){
 		String sql = "INSERT INTO clientes (id,nombre,telefono,correo) VALUES ('"+bitacora.getCliente().getId()+"','"
 				+ bitacora.getCliente().getNombre()+"','"+bitacora.getCliente().getTelefono()+"','"+bitacora.getCliente().getCorreo()+"');";
@@ -34,6 +36,8 @@ public class DAOTecnico {
 			return false;
 		}
 	}
+	
+	//Obtiene la Lista de Servicios para Mostrar
 	public LinkedList<Servicio> obetenerServicios(){
 		String sql = "SELECT * FROM servicios";
 		this.resultado = this.ds.query(sql);
@@ -53,6 +57,8 @@ public class DAOTecnico {
 		}
 		return servicios;
 	}
+	
+	//Obtiene la Lista de Tecnicos para Mostrar en el Select
 	public LinkedList<Usuario> obetenerTecnicos(){
 		String sql = "SELECT * FROM usuarios";
 		this.resultado = this.ds.query(sql);
@@ -73,6 +79,18 @@ public class DAOTecnico {
 			e.printStackTrace();
 		}
 		return usuarios;
+	}
+	//Agrega un Nuevo Servicio
+	public boolean agregarServicio (Servicio services){
+		String sql = "INSERT INTO servicios () VALUES (0,'"
+				+ services.getNombre()+"',"+services.getCosto()+",'"+services.getDescripcion()+"');";
+		this.fila = ds.update(sql);
+		if(this.fila == 1){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 	
 }

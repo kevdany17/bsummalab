@@ -19,7 +19,7 @@
 	}else{
 		%>
 		<div class="alert alert-danger">
-			<h1>Registro Exitoso</h1>
+			<h1>Error en el Registro</h1>
 		</div>
 <%	
 	}

@@ -1,5 +1,5 @@
 package com.bsummalab.bean;
-
+//Bean
 public class Equipo {
 	private String id;
 	private String fechaIngreso;

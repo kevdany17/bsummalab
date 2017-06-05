@@ -6,11 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="style/css/journal.css" rel="stylesheet"/>
+<script
+  src="http://code.jquery.com/jquery-1.10.2.min.js"
+  integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+  crossorigin="anonymous"></script>
 <script src="style/js/bootstrap.min.js"></script>
 <link href="style/css/header.css" rel="stylesheet"/>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
+
 <title>BS-UMMA Lab</title>
 </head>
 <body class="container-fluid">

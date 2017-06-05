@@ -10,9 +10,14 @@ import com.bsummalab.bean.*;
 public class DAOUsuario {
 	private DataSource ds;
 	private ResultSet resultado;
+	private int insercion;
+	
+	//Constructor con Inyeción de Dependicias
 	public DAOUsuario(DataSource dataSource){
 		this.ds = dataSource;
 	}
+	
+	//Logueo
 	public Usuario iniciarSesion(Usuario user){
 		String sql = "SELECT * FROM usuarios WHERE usuario='"+user.getUsuario()+"' AND contrasena='"+DigestUtils.md5Hex(user.getContrasena())+"';";
 		try {
@@ -33,5 +38,16 @@ public class DAOUsuario {
 			e.printStackTrace();
 		}
 		return user;
+	}
+	//Agrega Nuevos Usuarios o Tecnicos
+	public boolean agregarUsuario(Usuario user){
+		String sql = "INSERT INTO usuarios () VALUES (0,'"+user.getUsuario()+"','"+DigestUtils.md5Hex(user.getContrasena())+"',"
+				+ "'"+user.getPerfil()+"','"+user.getNombre()+"','"+user.getCorreo()+"','"+user.getTelefono()+"');";
+		this.insercion = this.ds.update(sql);
+		if(this.insercion==1){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

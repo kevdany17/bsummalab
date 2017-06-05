@@ -1,5 +1,5 @@
 package com.bsummalab.bean;
-
+//Bean
 public class Usuario {
 	private int id;
 	private String usuario;

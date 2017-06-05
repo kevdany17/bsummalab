@@ -1,7 +1,7 @@
 package com.bsummalab.bean;
 
 import java.util.LinkedList;
-
+//Bean
 public class Bitacora {
 	private Cliente cliente;
 	private LinkedList<Servicio> servicios;

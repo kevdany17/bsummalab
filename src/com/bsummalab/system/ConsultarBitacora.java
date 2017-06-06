@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bsummalab.bean.Bitacora;
 import com.bsummalab.bean.Cliente;
+import com.bsummalab.bean.Equipo;
 import com.bsummalab.dao.DAOBitacora;
 import com.bsummalab.datasource.DataSource;
 
@@ -50,7 +51,19 @@ public class ConsultarBitacora extends HttpServlet {
 	}
 	//Modifica el registro de la Bitacora Solicitado
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Equipo equipo =  new Equipo();
+		equipo.setId(Integer.parseInt(request.getParameter("id")));
+		equipo.setEstado(request.getParameter("estado"));
+		equipo.setFechaEntrega(request.getParameter("fecha-entrega"));
+		equipo.setObservaciones(request.getParameter("observaciones"));
+		DAOBitacora dao =  new DAOBitacora(new DataSource());
+		if(dao.actualizarBitacora(equipo)==true){
+			request.setAttribute("estado",1);
+			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+		}else{
+			request.setAttribute("estado",0);
+			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+		}
 	}
 
 }

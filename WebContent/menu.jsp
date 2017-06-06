@@ -21,8 +21,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Servicios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="AgregarServicio">Agregar Nuevo</a></li>
-            <li><a href="EditarServicio">Editar</a></li>
-            <li><a href="MostrarServicios">Mostrar Todos</a></li>
+            <!-- <li><a href="EditarServicio">Editar</a></li>
+            <li><a href="MostrarServicios">Mostrar Todos</a></li>-->
           </ul>
         </li>
       </ul>

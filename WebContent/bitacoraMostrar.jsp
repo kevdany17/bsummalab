@@ -31,6 +31,7 @@
 				<div class="form-group">
 					<label>
 						Nombre del Cliente:
+						<input name="id" type="hidden" class="form-control" value="<%= bitacora.getEquipos().get(0).getId() %>">
 						<input name="nombre-cliente" type="text" class="form-control" value="<%= bitacora.getCliente().getNombre() %>" disabled>
 					</label>
 				</div>
@@ -151,9 +152,9 @@
 						Estado:
 						<select class="form-control" name="estado">
 							<option value="<%= bitacora.getEquipos().get(0).getEstado() %>"><%= bitacora.getEquipos().get(0).getEstado() %></option>
-							<option value="ingreso">Ingreso</option>
-							<option value="mantenimiento">En Mantenimiento</option>
-							<option value="entregado">Entregado</option>
+							<option value="Ingreso">Ingreso</option>
+							<option value="Mantenimiento">En Mantenimiento</option>
+							<option value="Entregado">Entregado</option>
 						</select>
 					</label>
 				</div>
@@ -162,7 +163,7 @@
 				<div class="form-group">
 					<label>
 						Fecha de Entrega:
-						<input name="fecha-entrega" type="date" class="form-control" value="<%= bitacora.getEquipos().get(0).getFechaEntrega() %>">
+						<input name="fecha-entrega" type="date" class="form-control" value="<%= bitacora.getEquipos().get(0).getFechaEntrega()%>">
 					</label>
 				</div>
 			</div>

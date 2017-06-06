@@ -68,10 +68,11 @@ public class DAOBitacora {
 	}
 	//Actualiza solo algunos datos de la Bitacora por Proteción
 	public boolean actualizarBitacora(Equipo equipo){
-		String sql = "UPDATE equipos set estado='"+equipo.getEstado()+"' where id='"+equipo.getId()+"';"
-				+ "UPDATE equipos set fecha_entrega='"+equipo.getFechaEntrega()+"' where id='"+equipo.getId()+"'; ";
+		String sql = "UPDATE equipos set estado='"+equipo.getEstado()+"' where id='"+equipo.getId()+"';";
+		String sql0 = "UPDATE equipos set fecha_entrega='"+equipo.getFechaEntrega()+"' where id='"+equipo.getId()+"'; ";
 		String sql1 ="UPDATE equipos set observaciones='"+equipo.getObservaciones()+"' where id='"+equipo.getId()+"';";;
 		this.fila = this.ds.update(sql);
+		this.fila = this.ds.update(sql0);
 		this.fila = this.ds.update(sql1);
 		if(this.fila==1){
 			return true;

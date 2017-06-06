@@ -57,6 +57,8 @@ public class ConsultarBitacora extends HttpServlet {
 		equipo.setFechaEntrega(request.getParameter("fecha-entrega"));
 		equipo.setObservaciones(request.getParameter("observaciones"));
 		DAOBitacora dao =  new DAOBitacora(new DataSource());
+		System.out.println(equipo.getFechaEntrega());
+		System.out.println(equipo.getEstado());
 		if(dao.actualizarBitacora(equipo)==true){
 			request.setAttribute("estado",1);
 			request.getRequestDispatcher("mensaje.jsp").forward(request, response);

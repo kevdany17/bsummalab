@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import com.bsummalab.bean.Bitacora;
 import com.bsummalab.bean.Cliente;
+import com.bsummalab.bean.Equipo;
+import com.bsummalab.bean.Servicio;
 import com.bsummalab.datasource.DataSource;
 
 public class DAOBitacora {
@@ -16,26 +18,51 @@ public class DAOBitacora {
 	public DAOBitacora(DataSource dataSource){
 		this.ds = dataSource;
 	}
-	@SuppressWarnings("finally")
 	public Bitacora consultarBitacora(Cliente cliente){
 		String sql = "SELECT * FROM equipos	LEFT JOIN clientes "
 					+ "ON clientes.id = equipos.id_cliente "
 					+ "LEFT JOIN servicios_equipos "
-					+ "ON servicios_equipos.id_equipo = equipos.id"
+					+ "ON servicios_equipos.id_equipo = equipos.id "
 					+ "LEFT JOIN servicios "
 					+ "ON servicios.id = servicios_equipos.id_servicios "
 					+ "where clientes.nombre like '%"+cliente.getNombre()+"%'";
 		Bitacora bit = new Bitacora();
 		try {
 			this.resultado = this.ds.query(sql);
+			Cliente client = new Cliente();
+			Servicio servicio = new Servicio();
+			Equipo equipo = new Equipo();
 			while(this.resultado.next()){
-				
-			}
+				client.setNombre(this.resultado.getString("clientes.nombre"));
+				client.setTelefono(this.resultado.getString("telefono"));
+				client.setCorreo(this.resultado.getString("correo"));
+				client.setId(this.resultado.getString("id_cliente"));
+				equipo.setId(this.resultado.getInt("equipos.id"));
+				equipo.setFechaIngreso(this.resultado.getString("fecha_ingreso"));
+				equipo.setMarca(this.resultado.getString("marca"));
+				equipo.setModelo(this.resultado.getString("modelo"));
+				equipo.setTipo(this.resultado.getString("tipo"));
+				equipo.setSistema(this.resultado.getString("sistema"));
+				equipo.setRam(this.resultado.getString("ram"));
+				equipo.setHdd(this.resultado.getString("hdd"));
+				equipo.setLicencia(this.resultado.getString("licencia"));
+				equipo.setDiagnostico(this.resultado.getString("diagnostico"));
+				equipo.setObservaciones(this.resultado.getString("observaciones"));
+				equipo.setEstado(this.resultado.getString("estado"));
+				equipo.setFechaEntrega(this.resultado.getString("fecha_entrega"));
+				servicio.setId(Integer.parseInt(this.resultado.getString("id_servicios")));
+				servicio.setNombre(this.resultado.getString("servicios.nombre"));
+				servicio.setCosto(this.resultado.getInt("costo"));
+				servicio.setDescripcion(this.resultado.getString("detalles"));
+				}
+				bit.setCliente(client);
+				bit.setEquipos(equipo);
+				bit.setServicios(servicio);
+				return bit;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			//return null;
 		}
-		finally{
-			return bit;
-		}
+		return null;
 	}
 }

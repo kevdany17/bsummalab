@@ -96,22 +96,13 @@
 					<label>
 						Tipo:
 						<select name="tipo" class="form-control">
-							<option value="N/A">No Aplica</option>
-							<option value="Windows XP">Windows XP</option>
-							<option value="Windows Vista 32bits">Windows Vista 32bits</option>
-							<option value="Windows Vista 64bits">Windows Vista 64bits</option>
-							<option value="Windows Starter 32bits">Windows Starter 32bits</option>
-							<option value="Windows Starter 64bits">Windows Starter 64bits</option>
-							<option value="Windows 7 32bits">Windows 7 32bits</option>
-							<option value="Windows 7 64bits">Windows 7 64bits</option>
-							<option value="Windows 8 32bits">Windows 8 32bits</option>
-							<option value="Windows 8 64bits">Windows 8 64bits</option>
-							<option value="Windows 10 32bits">Windows 10 32bits</option>
-							<option value="Windows 10 64bits">Windows 10 64bits</option>
-							<option value="MAC OS">MAC OS</option>
-							<option value="GNU/Linux">GNU/Linux</option>
+							<option value="Laptop">Laptop</option>
+							<option value="C.Escritorio">C.Escritorio</option>
+							<option value="USB">USB</option>
+							<option value="iMAC">iMAC</option>
+							<option value="MAC-book">MAC-book</option>
 						</select>
-					</label>
+											</label>
 				</div>
 			</div>
 		</div>
@@ -121,11 +112,20 @@
 				<label>
 					Sistema:
 					<select name="sistema" class="form-control">
-						<option value="Laptop">Laptop</option>
-						<option value="C.Escritorio">C.Escritorio</option>
-						<option value="USB">USB</option>
-						<option value="iMAC">iMAC</option>
-						<option value="MAC-book">MAC-book</option>
+						<option value="N/A">No Aplica</option>
+						<option value="Windows XP">Windows XP</option>
+						<option value="Windows Vista 32bits">Windows Vista 32bits</option>
+						<option value="Windows Vista 64bits">Windows Vista 64bits</option>
+						<option value="Windows Starter 32bits">Windows Starter 32bits</option>
+						<option value="Windows Starter 64bits">Windows Starter 64bits</option>
+						<option value="Windows 7 32bits">Windows 7 32bits</option>
+						<option value="Windows 7 64bits">Windows 7 64bits</option>
+						<option value="Windows 8 32bits">Windows 8 32bits</option>
+						<option value="Windows 8 64bits">Windows 8 64bits</option>
+						<option value="Windows 10 32bits">Windows 10 32bits</option>
+						<option value="Windows 10 64bits">Windows 10 64bits</option>
+						<option value="MAC OS">MAC OS</option>
+						<option value="GNU/Linux">GNU/Linux</option>
 					</select>
 				</label>
 			</div>
@@ -180,9 +180,9 @@
 					<label>
 						Estado:
 						<select class="form-control" name="estado">
-							<option value="ingreso">Ingreso</option>
-							<option value="mantenimiento">En Mantenimiento</option>
-							<option value="entregado">Entregado</option>
+							<option value="Ingreso">Ingreso</option>
+							<option value="Mantenimiento">En Mantenimiento</option>
+							<option value="Entregado">Entregado</option>
 						</select>
 					</label>
 				</div>

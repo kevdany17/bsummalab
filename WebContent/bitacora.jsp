@@ -1,11 +1,6 @@
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
-<%@page import="java.util.Date" %>
-<%@page import="com.bsummalab.bean.Servicio" %>
-<%@page import="com.bsummalab.bean.Usuario" %>
-<%@page import="java.util.LinkedList" %>
 <link href="style/css/panel.css" rel="stylesheet"/>
-
 <div class="container-fluid">
 	<div class="bs-docs-section">
         <div class="row">
@@ -18,12 +13,14 @@
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
             <div class="well bs-component">
-             <form class="form-horizontal" action="ConsultarBitacora?tipo=consulta" method="get">
+             <form class="form-horizontal" action="ConsultarBitacora" method="get">
                 <fieldset>
                   <div class="form-group">
                     <label for="usuario" class="col-lg-2 control-label">Nombre Cliente</label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="nombre" name="usuario" placeholder="Usuario">
+                    <input type="hidden"  id="tipo" name="tipo" value="consulta">
+                      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del Cliente">
+                      
                     </div>
                   </div>                
                   <div class="form-group">

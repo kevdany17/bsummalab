@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import com.bsummalab.bean.*;
 import com.bsummalab.datasource.*;
@@ -37,6 +38,8 @@ public class Login extends HttpServlet {
 		DAOUsuario dao = new DAOUsuario(new DataSource());
 		if(dao.iniciarSesion(user) instanceof Usuario){
 			DAOTecnico tc = new DAOTecnico(new DataSource());
+			HttpSession session=request.getSession();
+			session.setMaxInactiveInterval(3600);
 			request.setAttribute("tecnicos",tc.obetenerTecnicos());
 			request.setAttribute("Lista",tc.obetenerServicios());
 			request.getSession().setAttribute("User", user);

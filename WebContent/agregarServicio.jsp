@@ -1,8 +1,5 @@
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
-<%@page import="java.util.Date" %>
-<%@page import="com.bsummalab.bean.Servicio" %>
-<%@page import="java.util.LinkedList" %>
 <link href="style/css/panel.css" rel="stylesheet"/>
 	<div class="container-fluid">
 		<form action="AgregarServicio" method="post">

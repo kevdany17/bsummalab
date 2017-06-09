@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.26, for Win64 (x86_64)
 --
--- Host: localhost    Database: bsumma
+-- Host: 127.0.0.1    Database: bsumma
 -- ------------------------------------------------------
 -- Server version	5.6.26-log
 
@@ -33,6 +33,15 @@ CREATE TABLE `cliente_equipos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `cliente_equipos`
+--
+
+LOCK TABLES `cliente_equipos` WRITE;
+/*!40000 ALTER TABLE `cliente_equipos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cliente_equipos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `clientes`
 --
 
@@ -47,6 +56,16 @@ CREATE TABLE `clientes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clientes`
+--
+
+LOCK TABLES `clientes` WRITE;
+/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES ('da19457edcd16e8dc6c4e789127291ea','Gonzalo Pineda','921886287','dkhrj1.6@gmail.com');
+/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `equipos`
@@ -65,7 +84,7 @@ CREATE TABLE `equipos` (
   `sistema` varchar(40) DEFAULT NULL,
   `ram` varchar(30) DEFAULT NULL,
   `hdd` varchar(20) DEFAULT NULL,
-  `liencia` varchar(60) DEFAULT NULL,
+  `licencia` varchar(60) DEFAULT NULL,
   `diagnostico` text,
   `observaciones` text,
   `estado` varchar(20) DEFAULT NULL,
@@ -73,6 +92,16 @@ CREATE TABLE `equipos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `equipos`
+--
+
+LOCK TABLES `equipos` WRITE;
+/*!40000 ALTER TABLE `equipos` DISABLE KEYS */;
+INSERT INTO `equipos` VALUES ('306508032','da19457edcd16e8dc6c4e789127291ea','2017-06-02','LG','LG678','Windows 8 32bits','Laptop','4gb','500gb','8127381532765634521534215432','rapido','Kit Anvanzado','Ingreso','2017-06-17');
+/*!40000 ALTER TABLE `equipos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `personal_equipos`
@@ -92,6 +121,15 @@ CREATE TABLE `personal_equipos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `personal_equipos`
+--
+
+LOCK TABLES `personal_equipos` WRITE;
+/*!40000 ALTER TABLE `personal_equipos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `personal_equipos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `servicios`
 --
 
@@ -104,8 +142,18 @@ CREATE TABLE `servicios` (
   `costo` int(5) DEFAULT NULL,
   `detalles` tinytext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `servicios`
+--
+
+LOCK TABLES `servicios` WRITE;
+/*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
+INSERT INTO `servicios` VALUES (1,'Kit Basico',150,'Por Especificar'),(2,'KitAdvance',200,'Por Especificar'),(3,'KitPro',250,'Por Especificar'),(4,'Kit SuperPro',450,'Una super Jalada');
+/*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `servicios_equipos`
@@ -125,6 +173,16 @@ CREATE TABLE `servicios_equipos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `servicios_equipos`
+--
+
+LOCK TABLES `servicios_equipos` WRITE;
+/*!40000 ALTER TABLE `servicios_equipos` DISABLE KEYS */;
+INSERT INTO `servicios_equipos` VALUES (2,'306508032');
+/*!40000 ALTER TABLE `servicios_equipos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -142,6 +200,16 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'tecnico','8f243d48b667ab0384570a93379122e7','Tecnico','Técnico','prueba@gmail.com','10100011'),(2,'admon','9dfb157eb256bc802c146b3111685d03','Admin','UMMALab ','administrador@gmail.com','9511428983');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -152,4 +220,4 @@ CREATE TABLE `usuarios` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-02 22:13:38
+-- Dump completed on 2017-06-09 10:56:34

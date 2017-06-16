@@ -4,12 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <link href="style/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="style/css/login.css" rel="stylesheet"/>
 <script src="style/js/bootstrap.min.js"></script>
 <title>BS-UMMA Lab</title>
+<script type="text/javascript">
+function nobackbutton(){
+	   window.location.hash="no-back-button";
+	   window.location.hash="Again-No-back-button" //chrome
+	   window.onhashchange=function(){window.location.hash="no-back-button";}
+	}
+</script>
 </head>
-<body>
+<body onload="nobackbutton()">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 content">
 			<form action="Login" method="post">

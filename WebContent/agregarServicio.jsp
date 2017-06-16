@@ -16,7 +16,10 @@
 					<div class="form-group">
 						<label>
 							Costo:
-							<input name="costo" type="text" class="form-control">
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<input name="costo" type="text" class="form-control">
+							</div>
 						</label>
 					</div>
 				</div>

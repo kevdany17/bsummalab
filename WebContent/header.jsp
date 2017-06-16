@@ -5,6 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!--  <meta http-equiv="Expires" content="0" /> 
+<meta http-equiv="Pragma" content="no-cache" />-->
+<!--  <script type="text/javascript">
+  if(history.forward(1)){
+    location.replace( history.forward(1) );
+  }
+</script>-->
 <link href="style/css/journal.css" rel="stylesheet"/>
 <script
   src="http://code.jquery.com/jquery-1.10.2.min.js"
@@ -16,6 +23,7 @@
 <title>BS-UMMA Lab</title>
 </head>
 <body class="container-fluid">
+
 <% Usuario user = (Usuario)request.getSession().getAttribute("User"); %>
 <div class="row">
 	<div class="col-md-2">
@@ -27,7 +35,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-2 col-md-offset-10" id="sub-header">
+	<div class="col-md-2" id="sub-header">
 		<h6>Bienvenido:&nbsp;<%= user.getNombre() %></h6>
+	</div>
+	<div class="col-md-1 col-md-offset-9">
+		<a href="Logout"><h6>Salir</h6></a>
 	</div>
 </div>

@@ -14,9 +14,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="Login">Registro</a></li>
+        <li class="active"><a href="Login" class="menu">Registro</a></li>
 		<li><a href="ConsultarBitacora?tipo=formulario">Bitacora</a></li>
-		<li><a href="AgregarColaborador">Ingresar T&eacute;cnicos </a></li>
+		<li><a href="AgregarColaborador" class="menu">Ingresar T&eacute;cnicos </a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Servicios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

@@ -40,6 +40,7 @@ public class AgregarColaborador extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario user = new Usuario();
 		user.setUsuario(request.getParameter("usuario"));
+		user.setNombre(request.getParameter("nombre"));
 		user.setContrasena(request.getParameter("contrasena"));
 		user.setCorreo(request.getParameter("correo"));
 		user.setPerfil(request.getParameter("perfil"));

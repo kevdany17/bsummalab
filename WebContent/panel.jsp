@@ -1,3 +1,9 @@
+<% if(session.getAttribute("User")==null){%>
+	<link href="style/css/journal.css" rel="stylesheet"/>
+	<div class="alert alert-danger"><h1>No tiene Acceso a esta Página</h1></div>
+<%
+}else{
+%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
 <%@page import="java.util.Date" %>
@@ -7,6 +13,7 @@
 <link href="style/css/panel.css" rel="stylesheet"/>
 <script type="text/javascript">
 	$(document).ready(function(){
+		document.getElementById("form").reset();
 		var costo = 0;
 		var temp = 0;
 		var total = 0;
@@ -25,7 +32,7 @@
 	});
 </script>
 <div class="container-fluid">
-	<form action="IngresarBitacora" method="post">
+	<form action="IngresarBitacora" method="post" id="form">
 		<div class="row">
 			<div class="col-md-3">
 				<div class="form-group">
@@ -195,17 +202,6 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-3">
-				<div class="form-group">
-					<label>
-						Costo:
-						<input name="costo" type="number" id="total" class="form-control">
-					</label>
-				</div>
-			</div>
-			<div class="col-md-2 col-md-offset-3">
-				<button type="submit" class="btn btn-primary" style="width:100%;">Guardar</button>
-			</div>
 		</div>
 		<div class="row">
 			<% 
@@ -217,6 +213,24 @@
 				</div>
 			<% } %>
 		</div>
+		<div class="row" style="margin-top: 50px;">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label>
+						Costo:
+						<div class="input-group">
+							<div class="input-group-addon">$</div>
+							<input name="costo" type="number" id="total" class="form-control">
+						</div>
+					</label>
+				</div>
+			</div>
+			<div class="col-md-2 col-md-offset-6" style="margin-top:2%;">
+				<button type="submit" class="btn btn-primary" style="width:100%;">Guardar</button>
+			</div>
+		</div>
+		
 	</form>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
+<%} %>

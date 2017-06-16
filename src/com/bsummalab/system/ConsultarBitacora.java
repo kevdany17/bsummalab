@@ -30,7 +30,7 @@ public class ConsultarBitacora extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		String pagina = "";
 		if(tipo.equals("formulario")){
-			//Devuel Formulario de Busqueda
+			//Devuel Formulario de Busqued
 			pagina = "bitacora.jsp";
 		}else if(tipo.equals("consulta")){
 			//Devuelve los datos del Equipo y Servicios 

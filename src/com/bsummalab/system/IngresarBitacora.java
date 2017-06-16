@@ -62,7 +62,7 @@ public class IngresarBitacora extends HttpServlet {
 		equipo.setDiagnostico(request.getParameter("diagnostico"));
 		equipo.setObservaciones(request.getParameter("observaciones"));
 		equipo.setFechaEntrega(request.getParameter("fecha-entrega"));
-		equipo.setEstado(request.getParameter("esatdo"));
+		equipo.setEstado(request.getParameter("estado"));
 		String [] servicios = request.getParameterValues("servicio");
 		for(String i:servicios){
 			Servicio service = new Servicio();

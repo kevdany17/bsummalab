@@ -12,6 +12,7 @@
 	if(Integer.parseInt(request.getAttribute("estado").toString())==1){
 		%>
 		<div class="alert alert-success">
+			<a href="Login" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Volver</a>
 			<h1>Registro Exitoso</h1>
 		</div>
 		
@@ -19,6 +20,7 @@
 	}else{
 		%>
 		<div class="alert alert-danger">
+			<a href="Login" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span>Volver</a>
 			<h1>Error en el Registro</h1>
 		</div>
 <%	

@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 			session.setMaxInactiveInterval(3600);
 			request.setAttribute("tecnicos",tc.obetenerTecnicos());
 			request.setAttribute("Lista",tc.obetenerServicios());
-			request.getSession().setAttribute("User", user);
+			session.setAttribute("User", user);
 			request.getRequestDispatcher("panel.jsp").forward(request, response);
 		}else{
 			request.setAttribute("error", "Usuario o Contrase&ntilde;a Incorrectos");

@@ -5,7 +5,11 @@
 <%@page import="com.bsummalab.bean.Usuario" %>
 <%@page import="java.util.LinkedList" %>
 <link href="style/css/panel.css" rel="stylesheet"/>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		document.getElementById("form").reset();
+	});
+</script>
 <div class="container-fluid">
 <div class="bs-docs-section">
         <div class="row">
@@ -18,7 +22,7 @@
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
             <div class="well bs-component">
-             <form class="form-horizontal" action="AgregarColaborador" method="post">
+             <form class="form-horizontal" action="AgregarColaborador" method="post" id="form" autocomplete="off">
                 <fieldset>
                   <div class="form-group">
                     <label for="usuario" class="col-lg-2 control-label">Usuario</label>

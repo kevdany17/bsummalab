@@ -2,6 +2,7 @@ package com.bsummalab.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import com.bsummalab.bean.Bitacora;
 import com.bsummalab.bean.Cliente;
@@ -18,15 +19,48 @@ public class DAOBitacora {
 	public DAOBitacora(DataSource dataSource){
 		this.ds = dataSource;
 	}
-	//Consulta la Bitacora
-	public Bitacora consultarBitacora(Cliente cliente){
+	//Consultar Lista de Equipos en la Bitacora
+	public LinkedList<Bitacora> consultarBitacoras(){
+		String sql = "SELECT clientes.nombre,clientes.telefono,equipos.id,equipos.tipo,equipos.marca,equipos.fecha_ingreso,servicios.nombre "
+				+ "FROM equipos LEFT JOIN clientes ON clientes.id = equipos.id_cliente LEFT JOIN servicios_equipos "
+				+ "ON servicios_equipos.id_equipo = equipos.id LEFT JOIN servicios ON servicios.id = servicios_equipos.id_servicios;";
+		this.resultado =  this.ds.query(sql);
+		LinkedList<Bitacora> lista =  new LinkedList<Bitacora>();
+		
+		try {
+			while(this.resultado.next()){
+				Servicio servicio = new Servicio();
+				Equipo equipo = new Equipo();
+				Cliente cliente =  new Cliente();
+				Bitacora bitacora = new Bitacora();
+				cliente.setNombre(this.resultado.getString("clientes.nombre"));
+				cliente.setTelefono(this.resultado.getString("telefono"));
+				equipo.setId(this.resultado.getInt("id"));
+				equipo.setTipo(this.resultado.getString("tipo"));
+				equipo.setMarca(this.resultado.getString("marca"));
+				equipo.setFechaIngreso(this.resultado.getString("fecha_ingreso"));
+				servicio.setNombre(this.resultado.getString("servicios.nombre"));
+				bitacora.setCliente(cliente);
+				bitacora.setEquipos(equipo);
+				bitacora.setServicios(servicio);
+				lista.add(bitacora);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lista;
+		
+	}
+	//Busca la Bitacora por ID
+	public Bitacora buscarBitacora(Equipo eq){
 		String sql = "SELECT * FROM equipos	LEFT JOIN clientes "
 					+ "ON clientes.id = equipos.id_cliente "
 					+ "LEFT JOIN servicios_equipos "
 					+ "ON servicios_equipos.id_equipo = equipos.id "
 					+ "LEFT JOIN servicios "
 					+ "ON servicios.id = servicios_equipos.id_servicios "
-					+ "where clientes.nombre like '%"+cliente.getNombre()+"%'";
+					+ "WHERE equipos.id = "+eq.getId()+";";
 		Bitacora bit = new Bitacora();
 		try {
 			this.resultado = this.ds.query(sql);
@@ -80,5 +114,12 @@ public class DAOBitacora {
 			return false;
 		}
 		
+	}
+	public int eliminarServicio(Equipo equipo){
+		String sql = "DELETE FROM equipos WHERE id="+equipo.getId()+";";
+		String sql2 = "DELETE FROM servicios_equipos WHERE id_equipo="+equipo.getId()+";";
+		int stado = this.ds.update(sql2);
+		stado += this.ds.update(sql);
+		return stado>=1?1:0;
 	}
 }

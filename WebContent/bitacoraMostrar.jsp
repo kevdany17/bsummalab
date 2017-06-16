@@ -1,3 +1,9 @@
+<% if(session.getAttribute("User")==null){%>
+	<link href="style/css/journal.css" rel="stylesheet"/>
+	<div class="alert alert-danger"><h1>No tiene Acceso a esta Página</h1></div>
+<%
+}else{
+%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
 <%@page import="com.bsummalab.bean.Servicio" %>
@@ -178,11 +184,8 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-2 col-md-offset-3">
-				<button type="submit" class="btn btn-primary" style="width:100%;">Guardar</button>
-			</div>
-		</div>
-		<div class="row">
+</div>
+			<div class="row">
 			<% 
 			LinkedList<Servicio> list = bitacora.getServicios();
 			for(int i=0;i<list.size();i++ ){%>
@@ -192,6 +195,10 @@
 				</div>
 			<% } %>
 		</div>
+		<div class="col-md-2 col-md-offset-8">
+			<button type="submit" class="btn btn-primary" style="width:100%;">Guardar</button>
+		</div>
 	</form>
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
+<%}%>

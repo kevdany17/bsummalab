@@ -1,3 +1,9 @@
+<% if(session.getAttribute("User")==null){%>
+	<link href="style/css/journal.css" rel="stylesheet"/>
+	<div class="alert alert-danger"><h1>No tiene Acceso a esta Página</h1></div>
+<%
+}else{
+%>
 <jsp:include page="header.jsp"></jsp:include>
 <jsp:include page="menu.jsp"></jsp:include>
 <link href="style/css/panel.css" rel="stylesheet"/>
@@ -42,3 +48,4 @@
 
 
 <jsp:include page="footer.jsp"></jsp:include>
+<%}%>

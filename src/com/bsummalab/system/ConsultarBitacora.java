@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bsummalab.bean.Bitacora;
 import com.bsummalab.bean.Cliente;
 import com.bsummalab.bean.Equipo;
+import com.bsummalab.bean.Servicio;
 import com.bsummalab.dao.DAOBitacora;
 import com.bsummalab.datasource.DataSource;
 
@@ -29,25 +30,33 @@ public class ConsultarBitacora extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipo = request.getParameter("tipo");
 		String pagina = "";
-		if(tipo.equals("formulario")){
-			//Devuel Formulario de Busqued
-			pagina = "bitacora.jsp";
-		}else if(tipo.equals("consulta")){
+		DAOBitacora dao = new DAOBitacora(new DataSource());
+		if(tipo.equals("select")){
+			//Devuel Formulario de Busqueda
+			request.setAttribute("lista", dao.consultarBitacoras());
+			pagina = "consultaBitacora.jsp";
+			request.getRequestDispatcher(pagina).forward(request, response);
+		}else if(tipo.equals("edit")){
 			//Devuelve los datos del Equipo y Servicios 
-			String nombre = request.getParameter("nombre");
-			Cliente cliente = new Cliente();
-			cliente.setNombre(nombre);
-			DAOBitacora dao =  new DAOBitacora(new DataSource());
-			Bitacora bitacora = dao.consultarBitacora(cliente);
+			Equipo equipo = new Equipo();
+			equipo.setId(Integer.parseInt(request.getParameter("id")));
+			Bitacora bitacora = dao.buscarBitacora(equipo);
 			if(bitacora!=null){
 				request.setAttribute("bitacora",bitacora);
 				pagina = "bitacoraMostrar.jsp";
 			}else{
 				pagina = "error.jsp";
 			}
-			
+			request.getRequestDispatcher(pagina).forward(request, response);
+		}else if(tipo.equals("delete")){
+			Equipo equipo = new Equipo();
+			equipo.setId(Integer.parseInt(request.getParameter("id")));
+			if(dao.eliminarServicio(equipo)==1){
+				response.getWriter().write("200");
+			}else{
+				response.getWriter().append("500");
+			}
 		}
-		request.getRequestDispatcher(pagina).forward(request, response);
 	}
 	//Modifica el registro de la Bitacora Solicitado
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,8 +69,9 @@ public class ConsultarBitacora extends HttpServlet {
 		System.out.println(equipo.getFechaEntrega());
 		System.out.println(equipo.getEstado());
 		if(dao.actualizarBitacora(equipo)==true){
-			request.setAttribute("estado",1);
-			request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+			//request.setAttribute("estado",1);
+			//request.getRequestDispatcher("mensaje.jsp").forward(request, response);
+			response.sendRedirect("ConsultarBitacora?tipo=select");
 		}else{
 			request.setAttribute("estado",0);
 			request.getRequestDispatcher("mensaje.jsp").forward(request, response);

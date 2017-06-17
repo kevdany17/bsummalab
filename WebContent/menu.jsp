@@ -1,3 +1,4 @@
+<%@page import="com.bsummalab.bean.Usuario" %>
 <div class="row">
 	<div class="col-md-12">
 		<nav class="navbar navbar-inverse">
@@ -11,13 +12,16 @@
       </button>
       <a class="navbar-brand" href="Login">Inicio</a>
     </div>
-
+	<% String pagina = (String) request.getAttribute("pagina"); %>
+	<% Usuario user =(Usuario)session.getAttribute("User"); %>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="Login" class="menu">Registro</a></li>
-		<li><a href="ConsultarBitacora?tipo=select">Bitacora</a></li>
-		<li><a href="AgregarColaborador" class="menu">Ingresar T&eacute;cnicos </a></li>
-        <li class="dropdown">
+        <li class="<%= pagina.equals("1")?"active":"" %>"><a href="Login">Registro</a></li>
+		<li class="<%= pagina.equals("2")?"active":"" %>"><a href="ConsultarBitacora?tipo=select">Bitacora</a></li>
+		 <% if(user.getPerfil().equals("Admin")) {%>
+		<li class="<%= pagina.equals("3")?"active":"" %>"><a href="AgregarColaborador">Ingresar T&eacute;cnicos </a></li>
+		<%} %>
+        <li class="dropdown <%= pagina.equals("4")?"active":"" %>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Servicios<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="AgregarServicio">Agregar Nuevo</a></li>

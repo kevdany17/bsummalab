@@ -33,6 +33,7 @@ public class ConsultarServicio extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		String pagina = "";
 		DAOServicio dao = new DAOServicio(new DataSource());
+		request.setAttribute("pagina","4");
 		if(tipo.equals("select")){
 			//Devuelve La tabla de todos los servicios
 			request.setAttribute("servicios", dao.obtenerServicios());

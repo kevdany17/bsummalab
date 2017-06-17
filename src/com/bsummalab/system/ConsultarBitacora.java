@@ -31,6 +31,7 @@ public class ConsultarBitacora extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		String pagina = "";
 		DAOBitacora dao = new DAOBitacora(new DataSource());
+		request.setAttribute("pagina","2");
 		if(tipo.equals("select")){
 			//Devuel Formulario de Busqueda
 			request.setAttribute("lista", dao.consultarBitacoras());

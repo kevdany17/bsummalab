@@ -25,6 +25,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOTecnico tc = new DAOTecnico(new DataSource());
+		request.setAttribute("pagina","1");
 		request.setAttribute("tecnicos",tc.obetenerTecnicos());
 		request.setAttribute("Lista",tc.obetenerServicios());
 		request.getRequestDispatcher("panel.jsp").forward(request, response);
@@ -40,6 +41,7 @@ public class Login extends HttpServlet {
 			DAOTecnico tc = new DAOTecnico(new DataSource());
 			HttpSession session=request.getSession();
 			session.setMaxInactiveInterval(3600);
+			request.setAttribute("pagina","1");
 			request.setAttribute("tecnicos",tc.obetenerTecnicos());
 			request.setAttribute("Lista",tc.obetenerServicios());
 			session.setAttribute("User", user);

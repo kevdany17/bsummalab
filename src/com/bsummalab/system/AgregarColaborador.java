@@ -31,6 +31,7 @@ public class AgregarColaborador extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setAttribute("pagina","3");
 		request.getRequestDispatcher("addColaborador.jsp").forward(request, response);
 	}
 

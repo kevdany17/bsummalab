@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<!--  <meta http-equiv="Expires" content="0" /> 
-<meta http-equiv="Pragma" content="no-cache" />-->
+<meta http-equiv="Expires" content="0" /> 
+<meta http-equiv="Pragma" content="no-cache" />
 <!--  <script type="text/javascript">
   if(history.forward(1)){
     location.replace( history.forward(1) );
